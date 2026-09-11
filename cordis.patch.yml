@@ -10,8 +10,12 @@
 # 2. Override the base `web` row's provider selection from `deepseek-official`
 #    (which spends a DeepSeek model turn per search) to `bing-free` (which is
 #    a free public HTML query via cn.bing.com, accessible from mainland China).
-#    The base row restates ONLY `searchProvider`; replacing its whole config with
-#    the same single key keeps the override intent-explicit.
+#
+# A patch REPLACES the targeted row's whole `config` rather than merging into
+# it, so this layer must restate every key the base row carries: dropping
+# `fetchProvider: http` here would silently undo the base's explicit fetch
+# selection. Keep the two keys in sync with dsh-base's `web` row when
+# upgrading.
 #
 # Because `bing-free` is explicitly configured, the seam never hits
 # WEB_PROVIDER_AMBIGUOUS even though `deepseek-official` may also be registered
@@ -21,6 +25,7 @@
 - id: web
   config:
     searchProvider: bing-free
+    fetchProvider: http
 
 - insert:
     - id: web-search-bing

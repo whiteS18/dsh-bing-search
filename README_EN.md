@@ -1,58 +1,77 @@
-﻿# dsh-web-search-bing
+# dsh-web-search-bing
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![DSH Compatible](https://img.shields.io/badge/DSH-1.x-brightgreen)](https://github.com/deepseek-ai/deepseek-harness)
+[![DSH Compatible](https://img.shields.io/badge/DSH-0.1.5--rc.1-brightgreen)](https://github.com/deepseek-ai/deepseek-harness)
 
 > Free Bing-backed web search provider for DeepSeek Harness (DSH). No API key needed, no search quota consumed.
 
 <p align="right">
-  <b>English</b> | <a href="README.md">涓枃</a>
+  <b>English</b> | <a href="README.md">中文</a>
 </p>
 
-## 鉁?Features
+> This is a maintenance fork of [godchen520/dsh-web-search-bing](https://github.com/godchen520/dsh-web-search-bing), updated for DSH `0.1.5-rc.1` (peer-dependency conflict fix + patch-layer correction).
 
-- **Completely Free** 鈥?Uses Bing's public HTML search page, no API key required
-- **China Accessible** 鈥?Defaults to `cn.bing.com`, works in mainland China
-- **Zero Quota** 鈥?Doesn't consume DeepSeek or any LLM search quota
-- **Plug & Play** 鈥?Automatically replaces the default search provider after install
-- **Configurable** 鈥?Switch endpoints, language, and result count
+## Features
 
-## 馃殌 Installation
+- **Completely Free** — Uses Bing's public HTML search page, no API key required
+- **China Accessible** — Defaults to `cn.bing.com`, works in mainland China
+- **Zero Quota** — Doesn't consume DeepSeek or any LLM search quota
+- **Plug & Play** — Automatically replaces the default search provider after install
+- **Configurable** — Switch endpoints, language, and result count
+
+## Installation
 
 ```bash
-cd $DSH_HOME/profiles/web
-pnpm add github:godchen520/dsh-web-search-bing
+cd $DSH_HOME/profiles/web   # usually ~/.dsh/profiles/web for the desktop app
+pnpm add <this-repo-url-or-local-path>
 ```
 
-Add `"dsh-web-search-bing"` to `dsh.profile.bundles` in `package.json`, restart DSH.
+Add `"dsh-web-search-bing"` to `dsh.profile.bundles` in the profile's `package.json` (after `@deepseek-ai/dsh-web-app`), then restart DSH.
 
-## 鈿欙笍 Configuration
+```json
+{
+  "dsh": {
+    "profile": {
+      "bundles": [
+        "@deepseek-ai/dsh-base",
+        "@deepseek-ai/dsh-web-app",
+        "dsh-web-search-bing"
+      ]
+    }
+  }
+}
+```
 
-Adjust in DSH Settings 鈫?Plugins:
+## Configuration
+
+Adjust in DSH Settings → Plugins → Plugin configuration (the `web-search-bing` section):
 
 | Option | Default | Description |
 |--------|---------|-------------|
 | `endpoint` | `https://cn.bing.com/search` | Search endpoint |
-| `maxResults` | `20` | Max results per search |
-| `ensearch` | `0` | `0`=Chinese, `1`=English |
+| `maxResults` | `20` | Max results parsed per search |
+| `ensearch` | `0` | `0` = Chinese results, `1` = English |
 
-Or override in `cordis.patch.yml`:
+Or override in the profile's `cordis.patch.yml`:
 
 ```yaml
-- id: web-search-duckduckgo
+- id: web-search-bing
   config:
     endpoint: https://cn.bing.com/search
     maxResults: 15
     ensearch: 0
 ```
 
-## 馃敡 How It Works
+## Restoring the default search
 
-Queries `cn.bing.com/search` 鈫?parses HTML results 鈫?extracts title/URL/snippet 鈫?returns to DSH's `web_search` tool.
+Change `searchProvider` in this plugin's patch back to `deepseek-official` (or remove this package from `bundles`) and restart.
+
+## How It Works
+
+Queries `cn.bing.com/search` → parses HTML result blocks (`<li class="b_algo">`) → extracts title/URL/snippet → returns to DSH's `web_search` tool.
 
 **No API key, no registration, works out of the box.**
 
-## 馃搫 License
+## License
 
 [MIT](LICENSE)
-
