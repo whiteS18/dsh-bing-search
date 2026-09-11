@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![DSH Compatible](https://img.shields.io/badge/DSH-0.1.5--rc.1-brightgreen)](https://github.com/deepseek-ai/deepseek-harness)
-[![npm](https://img.shields.io/npm/v/dsh-websearch-bing.svg)](https://www.npmjs.com/package/dsh-websearch-bing)
+[![npm](https://img.shields.io/npm/v/@cwsong/dsh-websearch-bing.svg)](https://www.npmjs.com/package/@cwsong/dsh-websearch-bing)
 
 > Free Bing-backed web search provider for DeepSeek Harness (DSH). No API key needed, no search quota consumed.
 
@@ -10,7 +10,7 @@
   <b>English</b> | <a href="README.md">中文</a>
 </p>
 
-> This is a maintenance fork of [godchen520/dsh-web-search-bing](https://github.com/godchen520/dsh-web-search-bing), updated for DSH `0.1.5-rc.1` (peer-dependency conflict fix + patch-layer correction). The package is published as `dsh-websearch-bing` because `dsh-web-search-bing` is already taken on npm.
+> This is a maintenance fork of [godchen520/dsh-web-search-bing](https://github.com/godchen520/dsh-web-search-bing), updated for DSH `0.1.5-rc.1`. The npm package is `@cwsong/dsh-websearch-bing` (the unscoped name was rejected as too similar to taken `dsh-web-search-bing`). The GitHub repo remains `whiteS18/dsh-websearch-bing`.
 
 ## Features
 
@@ -25,7 +25,7 @@
 npm:
 
 ```sh
-dsh plugin --profile desktop add dsh-websearch-bing
+dsh plugin --profile desktop add @cwsong/dsh-websearch-bing
 ```
 
 GitHub:
@@ -40,10 +40,10 @@ Or install by hand in the profile directory:
 
 ```sh
 cd $DSH_HOME/profiles/desktop   # usually ~/.dsh/profiles/desktop for the desktop app
-pnpm add dsh-websearch-bing
+pnpm add @cwsong/dsh-websearch-bing
 ```
 
-Then add `"dsh-websearch-bing"` to `dsh.profile.bundles` (after `@deepseek-ai/dsh-web-app`) and restart DSH.
+Then add `"@cwsong/dsh-websearch-bing"` to `dsh.profile.bundles` (after `@deepseek-ai/dsh-web-app`) and restart DSH.
 
 ## Configuration
 

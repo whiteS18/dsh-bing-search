@@ -29,4 +29,4 @@
 
 - insert:
     - id: websearch-bing
-      name: 'dsh-websearch-bing'
+      name: '@cwsong/dsh-websearch-bing'

@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![DSH Compatible](https://img.shields.io/badge/DSH-0.1.5--rc.1-brightgreen)](https://github.com/deepseek-ai/deepseek-harness)
-[![npm](https://img.shields.io/npm/v/dsh-websearch-bing.svg)](https://www.npmjs.com/package/dsh-websearch-bing)
+[![npm](https://img.shields.io/npm/v/@cwsong/dsh-websearch-bing.svg)](https://www.npmjs.com/package/@cwsong/dsh-websearch-bing)
 
 > DeepSeek Harness (DSH) 的免费 Bing 搜索 provider。无需 API Key，不消耗模型搜索配额。
 
@@ -10,7 +10,7 @@
   <a href="README_EN.md">English</a> | <b>中文</b>
 </p>
 
-> 本仓库是 [godchen520/dsh-web-search-bing](https://github.com/godchen520/dsh-web-search-bing) 的维护 fork，已适配 DSH `0.1.5-rc.1`（peerDependencies 冲突修复 + 配置补丁修正）。包名改为 `dsh-websearch-bing`，因为 npm 上的 `dsh-web-search-bing` 已被占用。
+> 本仓库是 [godchen520/dsh-web-search-bing](https://github.com/godchen520/dsh-web-search-bing) 的维护 fork，已适配 DSH `0.1.5-rc.1`。npm 包名为 `@cwsong/dsh-websearch-bing`（无作用域名会被判定与已占用的 `dsh-web-search-bing` 过于相似）。GitHub 仓库仍为 `whiteS18/dsh-websearch-bing`。
 
 ## 特点
 
@@ -25,7 +25,7 @@
 npm：
 
 ```sh
-dsh plugin --profile desktop add dsh-websearch-bing
+dsh plugin --profile desktop add @cwsong/dsh-websearch-bing
 ```
 
 GitHub：
@@ -40,10 +40,10 @@ dsh plugin --profile desktop add github:whiteS18/dsh-websearch-bing
 
 ```sh
 cd $DSH_HOME/profiles/desktop   # 桌面版通常为 ~/.dsh/profiles/desktop
-pnpm add dsh-websearch-bing
+pnpm add @cwsong/dsh-websearch-bing
 ```
 
-然后把 `"dsh-websearch-bing"` 加入 `dsh.profile.bundles`（放在 `@deepseek-ai/dsh-web-app` 之后），重启 DSH。
+然后把 `"@cwsong/dsh-websearch-bing"` 加入 `dsh.profile.bundles`（放在 `@deepseek-ai/dsh-web-app` 之后），重启 DSH。
 
 ## 配置
 

@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.2] - 2026-09-11
+
+### Changed
+- npm 包名改为 `@cwsong/dsh-websearch-bing`（无作用域名被判定与已占用的 `dsh-web-search-bing` 过于相似）
+
 ## [1.1.1] - 2026-09-11
 
 ### Changed
