@@ -3,7 +3,7 @@
 ## [1.1.0] - 2026-09-11
 
 ### Fixed
-- 适配 DSH `0.1.5-rc.1`：peerDependencies 从 `^0.1.0-rc.6` 升级到 `^0.1.5-rc.1`（旧的 prerelease 区间不匹配 0.1.5-rc.x，导致安装/启动报错）
+- 适配 DSH `0.1.5-rc.1`：peerDependencies 从 `^0.1.0-rc.6` 升级到 `>=0.1.5-rc.1 <0.2.0-0`（旧的 prerelease 区间不匹配 0.1.5-rc.x，导致安装/启动报错）
 - `cordis.patch.yml` 补回 `fetchProvider: http`：补丁是整段替换 `web` 行配置，只写 `searchProvider` 会丢掉 base 层显式设置的 fetch provider
 - 清理从 duckduckgo 版本遗留的注释/模块名（`web-search-duckduckgo`、`@module dsh-web-search-duckduckgo`）
 - 修复 README_EN.md 的 emoji 乱码

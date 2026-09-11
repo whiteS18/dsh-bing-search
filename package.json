@@ -6,6 +6,14 @@
     "type": "module",
     "main": "lib/index.js",
     "types": "lib/types/index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/whiteS18/dsh-web-search-bing.git"
+    },
+    "bugs": {
+        "url": "https://github.com/whiteS18/dsh-web-search-bing/issues"
+    },
+    "homepage": "https://github.com/whiteS18/dsh-web-search-bing#readme",
     "exports": {
         ".": {
             "types": "./lib/types/index.d.ts",
@@ -17,7 +25,11 @@
     "files": [
         "lib/index.js",
         "lib/types",
-        "cordis.patch.yml"
+        "cordis.patch.yml",
+        "README.md",
+        "README_EN.md",
+        "LICENSE",
+        "CHANGELOG.md"
     ],
     "engines": {
         "node": ">=18"
@@ -28,8 +40,8 @@
         }
     },
     "peerDependencies": {
-        "@deepseek-ai/dsh-settings": "^0.1.5-rc.1",
-        "@deepseek-ai/dsh-web": "^0.1.5-rc.1",
+        "@deepseek-ai/dsh-settings": ">=0.1.5-rc.1 <0.2.0-0",
+        "@deepseek-ai/dsh-web": ">=0.1.5-rc.1 <0.2.0-0",
         "@deepseek-ai/cordis": "^4.0.2"
     },
     "dependencies": {

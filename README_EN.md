@@ -16,43 +16,38 @@
 - **Completely Free** — Uses Bing's public HTML search page, no API key required
 - **China Accessible** — Defaults to `cn.bing.com`, works in mainland China
 - **Zero Quota** — Doesn't consume DeepSeek or any LLM search quota
-- **Plug & Play** — Automatically replaces the default search provider after install
+- **Plug & Play** — Switches `web_search` to `bing-free` after install
 - **Configurable** — Switch endpoints, language, and result count
 
 ## Installation
 
-```bash
-cd $DSH_HOME/profiles/web   # usually ~/.dsh/profiles/web for the desktop app
-pnpm add <this-repo-url-or-local-path>
+```sh
+dsh plugin --profile desktop add github:whiteS18/dsh-web-search-bing
 ```
 
-Add `"dsh-web-search-bing"` to `dsh.profile.bundles` in the profile's `package.json` (after `@deepseek-ai/dsh-web-app`), then restart DSH.
+Use `web` instead of `desktop` for the web profile. Restart DSH after install.
 
-```json
-{
-  "dsh": {
-    "profile": {
-      "bundles": [
-        "@deepseek-ai/dsh-base",
-        "@deepseek-ai/dsh-web-app",
-        "dsh-web-search-bing"
-      ]
-    }
-  }
-}
+Or install by hand in the profile directory:
+
+```sh
+cd $DSH_HOME/profiles/desktop   # usually ~/.dsh/profiles/desktop for the desktop app
+pnpm add github:whiteS18/dsh-web-search-bing
 ```
+
+Then add `"dsh-web-search-bing"` to `dsh.profile.bundles` (after `@deepseek-ai/dsh-web-app`) and restart DSH.
 
 ## Configuration
 
-Adjust in DSH Settings → Plugins → Plugin configuration (the `web-search-bing` section):
+This version has no Settings card. Edit `~/.dsh/settings.yaml` (hot-reloaded):
 
-| Option | Default | Description |
-|--------|---------|-------------|
-| `endpoint` | `https://cn.bing.com/search` | Search endpoint |
-| `maxResults` | `20` | Max results parsed per search |
-| `ensearch` | `0` | `0` = Chinese results, `1` = English |
+```yaml
+web-search-bing:
+  endpoint: https://cn.bing.com/search
+  maxResults: 20
+  ensearch: 0
+```
 
-Or override in the profile's `cordis.patch.yml`:
+Or override in the profile `cordis.patch.yml` and restart:
 
 ```yaml
 - id: web-search-bing
@@ -62,6 +57,18 @@ Or override in the profile's `cordis.patch.yml`:
     ensearch: 0
 ```
 
+| Option | Default | Description |
+|--------|---------|-------------|
+| `endpoint` | `https://cn.bing.com/search` | Search endpoint |
+| `maxResults` | `20` | Max results parsed per search |
+| `ensearch` | `0` | `0` = Chinese results, `1` = English |
+
+The **Web Search** card under Settings → Plugins → Plugin configuration belongs to official `web-search-deepseek`, not this plugin.
+
+## How to confirm Bing is in use
+
+Temporarily set `endpoint` to an invalid URL and search again. If the error names `web-search-bing` and the endpoint you set, this provider handled the request. Restore the endpoint afterwards.
+
 ## Restoring the default search
 
 Change `searchProvider` in this plugin's patch back to `deepseek-official` (or remove this package from `bundles`) and restart.
@@ -69,8 +76,6 @@ Change `searchProvider` in this plugin's patch back to `deepseek-official` (or r
 ## How It Works
 
 Queries `cn.bing.com/search` → parses HTML result blocks (`<li class="b_algo">`) → extracts title/URL/snippet → returns to DSH's `web_search` tool.
-
-**No API key, no registration, works out of the box.**
 
 ## License
 
