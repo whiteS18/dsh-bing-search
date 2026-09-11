@@ -1,7 +1,8 @@
-# dsh-web-search-bing
+# dsh-websearch-bing
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![DSH Compatible](https://img.shields.io/badge/DSH-0.1.5--rc.1-brightgreen)](https://github.com/deepseek-ai/deepseek-harness)
+[![npm](https://img.shields.io/npm/v/dsh-websearch-bing.svg)](https://www.npmjs.com/package/dsh-websearch-bing)
 
 > DeepSeek Harness (DSH) 的免费 Bing 搜索 provider。无需 API Key，不消耗模型搜索配额。
 
@@ -9,7 +10,7 @@
   <a href="README_EN.md">English</a> | <b>中文</b>
 </p>
 
-> 本仓库是 [godchen520/dsh-web-search-bing](https://github.com/godchen520/dsh-web-search-bing) 的维护 fork，已适配 DSH `0.1.5-rc.1`（peerDependencies 冲突修复 + 配置补丁修正）。
+> 本仓库是 [godchen520/dsh-web-search-bing](https://github.com/godchen520/dsh-web-search-bing) 的维护 fork，已适配 DSH `0.1.5-rc.1`（peerDependencies 冲突修复 + 配置补丁修正）。包名改为 `dsh-websearch-bing`，因为 npm 上的 `dsh-web-search-bing` 已被占用。
 
 ## 特点
 
@@ -21,8 +22,16 @@
 
 ## 安装
 
+npm：
+
 ```sh
-dsh plugin --profile desktop add github:whiteS18/dsh-web-search-bing
+dsh plugin --profile desktop add dsh-websearch-bing
+```
+
+GitHub：
+
+```sh
+dsh plugin --profile desktop add github:whiteS18/dsh-websearch-bing
 ```
 
 网页版 profile 把 `desktop` 换成 `web`。装完重启 DSH。
@@ -31,17 +40,17 @@ dsh plugin --profile desktop add github:whiteS18/dsh-web-search-bing
 
 ```sh
 cd $DSH_HOME/profiles/desktop   # 桌面版通常为 ~/.dsh/profiles/desktop
-pnpm add github:whiteS18/dsh-web-search-bing
+pnpm add dsh-websearch-bing
 ```
 
-然后把 `"dsh-web-search-bing"` 加入 `dsh.profile.bundles`（放在 `@deepseek-ai/dsh-web-app` 之后），重启 DSH。
+然后把 `"dsh-websearch-bing"` 加入 `dsh.profile.bundles`（放在 `@deepseek-ai/dsh-web-app` 之后），重启 DSH。
 
 ## 配置
 
 当前版本没有设置页卡片。改 `~/.dsh/settings.yaml`（热加载）：
 
 ```yaml
-web-search-bing:
+websearch-bing:
   endpoint: https://cn.bing.com/search
   maxResults: 20
   ensearch: 0
@@ -50,7 +59,7 @@ web-search-bing:
 或改 profile 的 `cordis.patch.yml` 后重启：
 
 ```yaml
-- id: web-search-bing
+- id: websearch-bing
   config:
     endpoint: https://cn.bing.com/search
     maxResults: 15
@@ -67,7 +76,7 @@ web-search-bing:
 
 ## 如何确认走的是 Bing
 
-把 endpoint 临时改成无效地址后再搜一次。如果报错包含 `web-search-bing` 和你写的 endpoint，就是本 provider。测完改回去。
+把 endpoint 临时改成无效地址后再搜一次。如果报错包含 `websearch-bing` 和你写的 endpoint，就是本 provider。测完改回去。
 
 ## 恢复默认搜索
 

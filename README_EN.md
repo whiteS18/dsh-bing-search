@@ -1,7 +1,8 @@
-# dsh-web-search-bing
+# dsh-websearch-bing
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![DSH Compatible](https://img.shields.io/badge/DSH-0.1.5--rc.1-brightgreen)](https://github.com/deepseek-ai/deepseek-harness)
+[![npm](https://img.shields.io/npm/v/dsh-websearch-bing.svg)](https://www.npmjs.com/package/dsh-websearch-bing)
 
 > Free Bing-backed web search provider for DeepSeek Harness (DSH). No API key needed, no search quota consumed.
 
@@ -9,7 +10,7 @@
   <b>English</b> | <a href="README.md">中文</a>
 </p>
 
-> This is a maintenance fork of [godchen520/dsh-web-search-bing](https://github.com/godchen520/dsh-web-search-bing), updated for DSH `0.1.5-rc.1` (peer-dependency conflict fix + patch-layer correction).
+> This is a maintenance fork of [godchen520/dsh-web-search-bing](https://github.com/godchen520/dsh-web-search-bing), updated for DSH `0.1.5-rc.1` (peer-dependency conflict fix + patch-layer correction). The package is published as `dsh-websearch-bing` because `dsh-web-search-bing` is already taken on npm.
 
 ## Features
 
@@ -21,8 +22,16 @@
 
 ## Installation
 
+npm:
+
 ```sh
-dsh plugin --profile desktop add github:whiteS18/dsh-web-search-bing
+dsh plugin --profile desktop add dsh-websearch-bing
+```
+
+GitHub:
+
+```sh
+dsh plugin --profile desktop add github:whiteS18/dsh-websearch-bing
 ```
 
 Use `web` instead of `desktop` for the web profile. Restart DSH after install.
@@ -31,17 +40,17 @@ Or install by hand in the profile directory:
 
 ```sh
 cd $DSH_HOME/profiles/desktop   # usually ~/.dsh/profiles/desktop for the desktop app
-pnpm add github:whiteS18/dsh-web-search-bing
+pnpm add dsh-websearch-bing
 ```
 
-Then add `"dsh-web-search-bing"` to `dsh.profile.bundles` (after `@deepseek-ai/dsh-web-app`) and restart DSH.
+Then add `"dsh-websearch-bing"` to `dsh.profile.bundles` (after `@deepseek-ai/dsh-web-app`) and restart DSH.
 
 ## Configuration
 
 This version has no Settings card. Edit `~/.dsh/settings.yaml` (hot-reloaded):
 
 ```yaml
-web-search-bing:
+websearch-bing:
   endpoint: https://cn.bing.com/search
   maxResults: 20
   ensearch: 0
@@ -50,7 +59,7 @@ web-search-bing:
 Or override in the profile `cordis.patch.yml` and restart:
 
 ```yaml
-- id: web-search-bing
+- id: websearch-bing
   config:
     endpoint: https://cn.bing.com/search
     maxResults: 15
@@ -67,7 +76,7 @@ The **Web Search** card under Settings → Plugins → Plugin configuration belo
 
 ## How to confirm Bing is in use
 
-Temporarily set `endpoint` to an invalid URL and search again. If the error names `web-search-bing` and the endpoint you set, this provider handled the request. Restore the endpoint afterwards.
+Temporarily set `endpoint` to an invalid URL and search again. If the error names `websearch-bing` and the endpoint you set, this provider handled the request. Restore the endpoint afterwards.
 
 ## Restoring the default search
 

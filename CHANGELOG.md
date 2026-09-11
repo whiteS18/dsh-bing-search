@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.1] - 2026-09-11
+
+### Changed
+- 包名、GitHub 仓库、loader 行和设置节统一为 `dsh-websearch-bing` / `websearch-bing`（npm 上的 `dsh-web-search-bing` 已被占用）
+
 ## [1.1.0] - 2026-09-11
 
 ### Fixed
