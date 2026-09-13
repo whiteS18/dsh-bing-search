@@ -1,19 +1,19 @@
 {
-    "name": "@cwsong/dsh-websearch-bing",
+    "name": "dsh-bing-search",
     "description": "Free Bing-backed web search provider for DeepSeek Harness (DSH). No API key needed, uses cn.bing.com for mainland China accessibility.",
-    "version": "1.1.2",
+    "version": "1.1.3",
     "license": "MIT",
     "type": "module",
     "main": "lib/index.js",
     "types": "lib/types/index.d.ts",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/whiteS18/dsh-websearch-bing.git"
+        "url": "git+https://github.com/whiteS18/dsh-bing-search.git"
     },
     "bugs": {
-        "url": "https://github.com/whiteS18/dsh-websearch-bing/issues"
+        "url": "https://github.com/whiteS18/dsh-bing-search/issues"
     },
-    "homepage": "https://github.com/whiteS18/dsh-websearch-bing#readme",
+    "homepage": "https://github.com/whiteS18/dsh-bing-search#readme",
     "exports": {
         ".": {
             "types": "./lib/types/index.d.ts",

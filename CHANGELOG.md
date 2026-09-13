@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.3] - 2026-09-13
+
+### Changed
+- 包名、GitHub 仓库、本地目录统一为 `dsh-bing-search`（无作用域、不带 `@cwsong/`）。`dsh-websearch-bing` 被 npm 判定与已占用的 `dsh-web-search-bing` 过于相似。
+
 ## [1.1.2] - 2026-09-11
 
 ### Changed

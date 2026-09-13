@@ -1,8 +1,8 @@
-# dsh-websearch-bing
+# dsh-bing-search
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![DSH Compatible](https://img.shields.io/badge/DSH-0.1.5--rc.1-brightgreen)](https://github.com/deepseek-ai/deepseek-harness)
-[![npm](https://img.shields.io/npm/v/@cwsong/dsh-websearch-bing.svg)](https://www.npmjs.com/package/@cwsong/dsh-websearch-bing)
+[![npm](https://img.shields.io/npm/v/dsh-bing-search.svg)](https://www.npmjs.com/package/dsh-bing-search)
 
 > Free Bing-backed web search provider for DeepSeek Harness (DSH). No API key needed, no search quota consumed.
 
@@ -10,7 +10,7 @@
   <b>English</b> | <a href="README.md">中文</a>
 </p>
 
-> This is a maintenance fork of [godchen520/dsh-web-search-bing](https://github.com/godchen520/dsh-web-search-bing), updated for DSH `0.1.5-rc.1`. The npm package is `@cwsong/dsh-websearch-bing` (the unscoped name was rejected as too similar to taken `dsh-web-search-bing`). The GitHub repo remains `whiteS18/dsh-websearch-bing`.
+> This is a maintenance fork of [godchen520/dsh-web-search-bing](https://github.com/godchen520/dsh-web-search-bing), updated for DSH `0.1.5-rc.1`. The package is `dsh-bing-search` because `dsh-web-search-bing` is taken on npm and `dsh-websearch-bing` was rejected as too similar.
 
 ## Features
 
@@ -25,13 +25,13 @@
 npm:
 
 ```sh
-dsh plugin --profile desktop add @cwsong/dsh-websearch-bing
+dsh plugin --profile desktop add dsh-bing-search
 ```
 
 GitHub:
 
 ```sh
-dsh plugin --profile desktop add github:whiteS18/dsh-websearch-bing
+dsh plugin --profile desktop add github:whiteS18/dsh-bing-search
 ```
 
 Use `web` instead of `desktop` for the web profile. Restart DSH after install.
@@ -40,17 +40,19 @@ Or install by hand in the profile directory:
 
 ```sh
 cd $DSH_HOME/profiles/desktop   # usually ~/.dsh/profiles/desktop for the desktop app
-pnpm add @cwsong/dsh-websearch-bing
+pnpm add dsh-bing-search
 ```
 
-Then add `"@cwsong/dsh-websearch-bing"` to `dsh.profile.bundles` (after `@deepseek-ai/dsh-web-app`) and restart DSH.
+Then add `"dsh-bing-search"` to `dsh.profile.bundles` (after `@deepseek-ai/dsh-web-app`) and restart DSH.
+
+**Note:** the directory name under `node_modules` must equal `package.json` `name`. Do not link this package as `dsh-web-search-bing`, or the desktop app will fail with `profile package identity is invalid`.
 
 ## Configuration
 
 This version has no Settings card. Edit `~/.dsh/settings.yaml` (hot-reloaded):
 
 ```yaml
-websearch-bing:
+bing-search:
   endpoint: https://cn.bing.com/search
   maxResults: 20
   ensearch: 0
@@ -59,7 +61,7 @@ websearch-bing:
 Or override in the profile `cordis.patch.yml` and restart:
 
 ```yaml
-- id: websearch-bing
+- id: bing-search
   config:
     endpoint: https://cn.bing.com/search
     maxResults: 15
@@ -76,7 +78,7 @@ The **Web Search** card under Settings → Plugins → Plugin configuration belo
 
 ## How to confirm Bing is in use
 
-Temporarily set `endpoint` to an invalid URL and search again. If the error names `websearch-bing` and the endpoint you set, this provider handled the request. Restore the endpoint afterwards.
+Temporarily set `endpoint` to an invalid URL and search again. If the error names `bing-search` and the endpoint you set, this provider handled the request. Restore the endpoint afterwards.
 
 ## Restoring the default search
 

@@ -1,6 +1,6 @@
 /**
  * Types for the Bing-backed free web search provider bundle.
- * @module dsh-websearch-bing
+ * @module dsh-bing-search
  */
 
 /** One normalized search hit returned by a provider. */
@@ -40,7 +40,7 @@ export declare const DEFAULT_ENDPOINT: string;
 export declare const DEFAULT_ENSEARCH: number;
 /** Default upper bound on parsed results per page. */
 export declare const DEFAULT_MAX_RESULTS: number;
-/** Settings namespace for this provider (`websearch-bing`). */
+/** Settings namespace for this provider (`bing-search`). */
 export declare const WEB_SEARCH_BING_SETTINGS_NAMESPACE: string;
 /**
  * The Bing-backed free provider, satisfying {@link WebSearchProvider}.
