@@ -1,7 +1,7 @@
 # dsh-bing-search
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![DSH Compatible](https://img.shields.io/badge/DSH-0.1.5--rc.1-brightgreen)](https://github.com/deepseek-ai/deepseek-harness)
+[![DSH Compatible](https://img.shields.io/badge/DSH-0.1.5--rc.1%20..%20%3C0.3.0-brightgreen)](https://github.com/deepseek-ai/deepseek-harness)
 [![npm](https://img.shields.io/npm/v/dsh-bing-search.svg)](https://www.npmjs.com/package/dsh-bing-search)
 
 > DeepSeek Harness (DSH) 的免费 Bing 搜索 provider。无需 API Key，不消耗模型搜索配额。
@@ -10,7 +10,7 @@
   <a href="README_EN.md">English</a> | <b>中文</b>
 </p>
 
-> 本仓库是 [godchen520/dsh-web-search-bing](https://github.com/godchen520/dsh-web-search-bing) 的维护 fork，已适配 DSH `0.1.5-rc.1`。包名用 `dsh-bing-search`，因为 `dsh-web-search-bing` 已被占用，`dsh-websearch-bing` 又被 npm 判定过于相似。
+> 本仓库是 [godchen520/dsh-web-search-bing](https://github.com/godchen520/dsh-web-search-bing) 的维护 fork，适配 DSH `>=0.1.5-rc.1 <0.3.0`（含 `0.2.0-rc.1`）。包名用 `dsh-bing-search`，因为 `dsh-web-search-bing` 已被占用，`dsh-websearch-bing` 又被 npm 判定过于相似。
 
 ## 特点
 

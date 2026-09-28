@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.5] - 2026-09-29
+
+### Fixed
+- 安装被 DSH `0.2.0-rc.1` 拒绝：`@deepseek-ai/dsh-web` 与 `@deepseek-ai/dsh-settings` 的 peer 上限从 `<0.2.0-0` 放宽到 `<0.3.0-0`。运行时只使用 `WebError`、`ctx.web.registerSearchProvider`，以及在存在时才调用的 `settings.installSection`。
+
 ## [1.1.4] - 2026-09-28
 
 ### Added

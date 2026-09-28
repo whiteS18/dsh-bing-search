@@ -1,7 +1,7 @@
 # dsh-bing-search
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![DSH Compatible](https://img.shields.io/badge/DSH-0.1.5--rc.1-brightgreen)](https://github.com/deepseek-ai/deepseek-harness)
+[![DSH Compatible](https://img.shields.io/badge/DSH-0.1.5--rc.1%20..%20%3C0.3.0-brightgreen)](https://github.com/deepseek-ai/deepseek-harness)
 [![npm](https://img.shields.io/npm/v/dsh-bing-search.svg)](https://www.npmjs.com/package/dsh-bing-search)
 
 > Free Bing-backed web search provider for DeepSeek Harness (DSH). No API key needed, no search quota consumed.
@@ -10,7 +10,7 @@
   <b>English</b> | <a href="README.md">中文</a>
 </p>
 
-> This is a maintenance fork of [godchen520/dsh-web-search-bing](https://github.com/godchen520/dsh-web-search-bing), updated for DSH `0.1.5-rc.1`. The package is `dsh-bing-search` because `dsh-web-search-bing` is taken on npm and `dsh-websearch-bing` was rejected as too similar.
+> This is a maintenance fork of [godchen520/dsh-web-search-bing](https://github.com/godchen520/dsh-web-search-bing), compatible with DSH `>=0.1.5-rc.1 <0.3.0` (including `0.2.0-rc.1`). The package is `dsh-bing-search` because `dsh-web-search-bing` is taken on npm and `dsh-websearch-bing` was rejected as too similar.
 
 ## Features
 
