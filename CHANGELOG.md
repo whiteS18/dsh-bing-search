@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.4] - 2026-09-28
+
+### Added
+- DSH `>= 0.1.6` 的插件页配置表单（`client.js`）：编辑搜索入口、语言和解析上限。旧版本仍走 `settings.installSection`。
+
+### Changed
+- 配置字段在运行时支持 `volatile` 时标记为 volatile，搜索时解开热更新后的值；没有该方法的旧运行时保持原样。
+
 ## [1.1.3] - 2026-09-13
 
 ### Changed
