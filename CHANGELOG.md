@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.6] - 2026-09-29
+
+### Fixed
+- 启动报 `bing-search (dsh-bing-search): failed to import`：`@deepseek-ai/schemastery` 从 dependencies 改回 peerDependencies。链接进 profile 的插件只有 peer 会解析到宿主安装；作为 dependency 时 Node 在插件目录里找不到它，loader 建不起 fiber。
+
 ## [1.1.5] - 2026-09-29
 
 ### Fixed
