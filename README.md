@@ -49,7 +49,10 @@ pnpm add dsh-bing-search
 
 ## 配置
 
-当前版本没有设置页卡片。改 `~/.dsh/settings.yaml`（热加载）：
+配置界面取决于 DSH 版本：
+
+- **DSH >= 0.1.6**：设置 → 插件 → 本插件详情页里有「Bing 免费搜索」配置表单（搜索入口 URL、解析上限、结果语言），保存即生效——三个字段都是 volatile，热更新，无需重启。
+- **DSH <= 0.1.5**：插件通过 `settings.installSection` 自动生成设置节；也可以直接改 `~/.dsh/settings.yaml`（热加载）：
 
 ```yaml
 bing-search:
@@ -70,8 +73,8 @@ bing-search:
 
 | 参数 | 默认值 | 说明 |
 |------|--------|------|
-| `endpoint` | `https://cn.bing.com/search` | 搜索端点 |
-| `maxResults` | `20` | 每次搜索最大结果数 |
+| `endpoint` | `https://cn.bing.com/search` | 搜索端点（必须是合法 URL，否则 provider 报不可用） |
+| `maxResults` | `20` | 每次搜索最大结果数（正整数，最小 1） |
 | `ensearch` | `0` | 0=中文结果，1=英文结果 |
 
 设置 → 插件 → 插件配置 里的 **Web Search** 卡片属于官方 `web-search-deepseek`，不是本插件。
@@ -80,13 +83,18 @@ bing-search:
 
 把 endpoint 临时改成无效地址后再搜一次。如果报错包含 `bing-search` 和你写的 endpoint，就是本 provider。测完改回去。
 
+错误统一为 `WebError`（code 为 `WEB_PROVIDER_ERROR` / `WEB_ABORTED`），错误信息自带恢复指引。如果报错提示 captcha/反爬拦截，说明 Bing 触发了人机验证，稍后重试或临时切回官方搜索。
+
 ## 恢复默认搜索
 
-把本插件 patch 中的 `searchProvider` 改回 `deepseek-official`（或从 bundles 移除本包），重启即可。
+本插件把 `web` 行的 `searchProvider` 切到 `bing-free`（provider id）。恢复默认：把本插件 patch 中的 `searchProvider` 改回 `deepseek-official`（或从 bundles 移除本包），重启即可。
+
+> [!WARNING]
+> 自带 `cordis.patch.yml` 对 `web` 行是**整段替换**，所以补丁里必须同时复述 `fetchProvider: http`。自己改 patch 时若只写 `searchProvider` 而不带 `fetchProvider`，会丢掉默认的 fetch 配置。
 
 ## 工作原理
 
-调用 `cn.bing.com/search` → 解析 HTML 搜索结果（`<li class="b_algo">` 块）→ 提取标题/URL/摘要 → 返回给 DSH 的 `web_search` 工具。
+调用 `cn.bing.com/search`（带桌面 Chrome UA 和 `accept-language: zh-CN`）→ 解析 HTML 搜索结果（`<li class="b_algo">` 块，URL 去重、实体解码、丢弃非 http(s) 链接）→ 提取标题/URL/摘要 → 返回给 DSH 的 `web_search` 工具。
 
 ## License
 

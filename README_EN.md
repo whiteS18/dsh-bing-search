@@ -49,7 +49,10 @@ Then add `"dsh-bing-search"` to `dsh.profile.bundles` (after `@deepseek-ai/dsh-w
 
 ## Configuration
 
-This version has no Settings card. Edit `~/.dsh/settings.yaml` (hot-reloaded):
+The configuration UI depends on the DSH version:
+
+- **DSH >= 0.1.6**: the plugin detail page under Settings → Plugins provides a config form (endpoint URL, parse limit, result language). Saving takes effect immediately — all three fields are volatile and hot-reloaded, no restart needed.
+- **DSH <= 0.1.5**: the plugin auto-generates a settings section via `settings.installSection`. You can also edit `~/.dsh/settings.yaml` directly (hot-reloaded):
 
 ```yaml
 bing-search:
@@ -70,8 +73,8 @@ Or override in the profile `cordis.patch.yml` and restart:
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `endpoint` | `https://cn.bing.com/search` | Search endpoint |
-| `maxResults` | `20` | Max results parsed per search |
+| `endpoint` | `https://cn.bing.com/search` | Search endpoint (must be a valid URL, otherwise the provider reports unavailable) |
+| `maxResults` | `20` | Max results parsed per search (positive integer, min 1) |
 | `ensearch` | `0` | `0` = Chinese results, `1` = English |
 
 The **Web Search** card under Settings → Plugins → Plugin configuration belongs to official `web-search-deepseek`, not this plugin.
@@ -80,13 +83,18 @@ The **Web Search** card under Settings → Plugins → Plugin configuration belo
 
 Temporarily set `endpoint` to an invalid URL and search again. If the error names `bing-search` and the endpoint you set, this provider handled the request. Restore the endpoint afterwards.
 
+Errors are `WebError`s (code `WEB_PROVIDER_ERROR` / `WEB_ABORTED`) whose messages include recovery guidance. If the error mentions a captcha/anti-bot gate, Bing has triggered human verification — retry later or temporarily switch back to the official search.
+
 ## Restoring the default search
 
-Change `searchProvider` in this plugin's patch back to `deepseek-official` (or remove this package from `bundles`) and restart.
+This plugin switches the `web` row's `searchProvider` to `bing-free` (the provider id). To restore: change `searchProvider` in this plugin's patch back to `deepseek-official` (or remove this package from `bundles`) and restart.
+
+> [!WARNING]
+> The bundled `cordis.patch.yml` **replaces the whole `web` row**, so it must restate `fetchProvider: http`. If you customize the patch and only write `searchProvider` without `fetchProvider`, you will lose the default fetch configuration.
 
 ## How It Works
 
-Queries `cn.bing.com/search` → parses HTML result blocks (`<li class="b_algo">`) → extracts title/URL/snippet → returns to DSH's `web_search` tool.
+Queries `cn.bing.com/search` (with a desktop Chrome UA and `accept-language: zh-CN`) → parses HTML result blocks (`<li class="b_algo">`, deduplicating URLs, decoding entities, dropping non-http(s) links) → extracts title/URL/snippet → returns to DSH's `web_search` tool.
 
 ## License
 
